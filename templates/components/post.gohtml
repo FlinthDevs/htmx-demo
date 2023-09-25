@@ -1,0 +1,28 @@
+{{define "post"}}
+<div id="post-card-{{ .ID }}" class="card bg-light">
+    <header>
+        <h4><b>{{ .Title }}</b></h5>
+    </header>
+    <p>{{ .Content }}</p>
+    <hr>
+    <footer class="is-space-between">
+        <p>{{ .CreatedAt.Format "2 January 2006 - 15:36" }}</p>
+        <div class="is-space-between">
+        <button hx-target="#post-card-{{.ID}}" class="button primary icon" type="button" hx-boost="true" hx-get="/posts/{{ .ID }}/edit">
+            Edit 
+            <img alt="icon" src="https://icongr.am/fontawesome/edit.svg?size=16&color=ffffff"/>
+        </button>
+        <button hx-delete="/posts/{{ .ID }}"
+                hx-confirm="Are you sure?" 
+                hx-target="closest .card" 
+                hx-swap="outerHTML swap:0.5s" 
+                hx-trigger="click"
+                type="button" 
+                class="button error"
+            >
+                Delete
+        </button>
+    </div>
+    </footer>
+</div>
+{{end}}

@@ -1,0 +1,15 @@
+{{ define "postsList" }}
+    {{ range .Posts }}    
+        {{template "post" .}}
+    {{ end }}
+    {{ if gt .NextPage 0 }}
+    <div hx-get="/posts/page/{{.NextPage}}"
+         hx-trigger="revealed"
+         hx-swap="beforeend"
+         hx-target="#posts"
+         class="is-center"
+        >
+         {{ template "loader"}}
+    </div>
+    {{ end }}
+{{ end }}

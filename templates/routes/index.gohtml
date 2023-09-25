@@ -1,0 +1,22 @@
+{{ template "start" . }}
+<div class="nav">
+    <div class="nav-left">
+        <h3>Here are the current posts</h3>
+    </div>
+    <div class="nav-right">
+        <button hx-get="/modal"
+                hx-target="body" 
+                hx-swap="beforeend" 
+                class="button outline primary"
+            >
+            Write something interesting
+        </button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div id="posts" class="col">
+        {{ template "postsList" . }}
+    </div>
+</div>
+{{ template "end" . }}

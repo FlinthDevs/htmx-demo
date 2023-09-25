@@ -1,0 +1,29 @@
+{{define "editForm"}}
+<form hx-patch="/posts/{{.ID}}" hx-target="#post-card-{{.ID}}" hx-swap="outerHTML">
+    <header>
+        <input type="text" id="title" name="title" value="{{ .Title }}"/>
+    </header>
+    <p>
+        <textarea name="content" id="content">{{ .Content }}</textarea>
+    </p>
+    <p>
+    <input id="lagValue" name="lagValue" value="0" type="text"/>
+    </p>
+    <footer style="text-align: right">
+        <div class="ctas">
+            <button type="submit" class="button primary">
+                Save
+            </button>
+            <button hx-boost="true"
+                    hx-get="/posts/{{.ID}}" 
+                    hx-swap="outerHTML" 
+                    hx-target="closest .card" 
+                    type="button" 
+                    class="button dark outline">
+                Cancel
+            </button>
+        </div>
+        {{ template "loader"}}
+    </footer>
+</form>
+{{end}}

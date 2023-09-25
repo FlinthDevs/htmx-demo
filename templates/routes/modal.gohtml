@@ -1,0 +1,24 @@
+<div id="modal" _="on closeModal add .closing wait for animationend then remove me">
+
+    <div class="modal-underlay" _="on click trigger closeModal"></div>
+
+    <div class="modal-content">
+        <form hx-post="/posts" 
+              hx-target="#posts" 
+              hx-swap="afterbegin" 
+              _="on htmx:afterRequest trigger closeModal"
+        >
+            <h2 class="pull-left">Create new post</h2>
+            <button class="pull-right" _="on click trigger closeModal">X</button>            
+            <p class="clearfix">
+                <label for="title">Title</label>
+                <input id="title" required minlength="3"  type="text" name="Title" placeholder="Title" hx-validate="true">
+            </p>
+            <p>
+                <label for="content">Content</label>
+                <textarea id="content" required minlength="10" name="Content" placeholder="Content"></textarea>
+            </p>
+            <p><button type="submit" class="button primary">Create Post</button></p>
+        </form>
+    </div>
+</div>
