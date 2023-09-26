@@ -14,8 +14,7 @@
             <button type="submit" class="button primary">
                 Save
             </button>
-            <button hx-boost="true"
-                    hx-get="/posts/{{.ID}}" 
+            <button hx-get="/posts/{{.ID}}" 
                     hx-swap="outerHTML" 
                     hx-target="closest .card" 
                     type="button" 

@@ -8,8 +8,12 @@
     <footer class="is-space-between">
         <p>{{ .CreatedAt.Format "2 January 2006 - 15:36" }}</p>
         <div class="is-space-between">
-        <button hx-target="#post-card-{{.ID}}" class="button primary icon" type="button" hx-boost="true" hx-get="/posts/{{ .ID }}/edit">
-            Edit 
+        <button hx-target="#post-card-{{.ID}}"
+                hx-get="/posts/{{ .ID }}/edit"
+                class="button primary icon"
+                type="button" 
+            >
+                Edit 
             <img alt="icon" src="https://icongr.am/fontawesome/edit.svg?size=16&color=ffffff"/>
         </button>
         <button hx-delete="/posts/{{ .ID }}"
