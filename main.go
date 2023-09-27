@@ -65,12 +65,18 @@ func main() {
 		var posts []Post
 		db.Order("created_at desc").Limit(5).Find(&posts)
 
-		c.HTML(http.StatusOK, "index.gohtml", gin.H{"Title": "Main blog", "CurrentPage": "home", "Posts": posts, "NextPage": 2, "headUrls": headUrls})
+		boostedHeader := c.Request.Header["Hx-Boosted"]
+		headlessMode := len(boostedHeader) > 0 && boostedHeader[0] == "true"
+		c.HTML(http.StatusOK, "index.gohtml", gin.H{"Title": "Main blog", "CurrentPage": "home", "Posts": posts, "NextPage": 2, "headUrls": headUrls, "HeadlessMode": headlessMode})
+		// c.HTML(http.StatusOK, "index.gohtml", gin.H{"Title": "Main blog", "CurrentPage": "home", "Posts": posts, "NextPage": 2, "headUrls": headUrls})
 	})
 
 	// Get About page.
 	router.GET("/about", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "about.gohtml", gin.H{"Title": "About", "CurrentPage": "about", "headUrls": headUrls})
+		boostedHeader := c.Request.Header["Hx-Boosted"]
+		headlessMode := len(boostedHeader) > 0 && boostedHeader[0] == "true"
+		c.HTML(http.StatusOK, "about.gohtml", gin.H{"Title": "About", "CurrentPage": "about", "headUrls": headUrls, "HeadlessMode": headlessMode})
+		// c.HTML(http.StatusOK, "about.gohtml", gin.H{"Title": "About", "CurrentPage": "about", "headUrls": headUrls})
 	})
 
 	// Get paginated posts.
@@ -90,7 +96,7 @@ func main() {
 		}
 
 		// Make it less snappy.
-		// time.Sleep(time.Second * 2)
+		time.Sleep(time.Second * 2)
 
 		// Set nextPage to -1 if there are no more posts.
 		nextPage := pageNumber + 1

@@ -1,4 +1,4 @@
-{{ template "start" . }}
+{{ if not .HeadlessMode }}{{ template "start" . }}{{end}}
 <div class="nav">
     <div class="nav-left">
         <h3>Here are the current posts</h3>
@@ -19,4 +19,4 @@
         {{ template "postsList" . }}
     </div>
 </div>
-{{ template "end" . }}
+{{ if not .HeadlessMode }}{{ template "end" . }}{{end}}

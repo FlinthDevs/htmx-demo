@@ -1,7 +1,8 @@
-{{ template "start" . }}
+{{ if not .HeadlessMode }}{{ template "start" . }}{{end}}
+
 <p>
 Une page très à propos.
 <br>
 F.
 </p>
-{{ template "end" . }}
+{{ if not .HeadlessMode }}{{ template "end" . }}{{end}}

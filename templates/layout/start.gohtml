@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col">
                 <h1 class="is-center">{{ .Title }}</h1>
-                <nav>
+                <nav hx-boost="true" hx-target="#main">
                     <div class="tabs">
                         <a href="/" class="{{ if eq .CurrentPage "home" }}active{{end}}">Home</a>
                         <a href="/about" class="{{ if eq .CurrentPage "about" }}active{{end}}">About</a>
