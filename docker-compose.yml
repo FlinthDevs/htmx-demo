@@ -8,16 +8,10 @@ services:
     working_dir: /app
     command: sh -c "go run main.go"
     environment:
+      # If OFFLINE is 1 then chota, htmx and hyperscript are loaded locally.
       - OFFLINE=$OFFLINE
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.htmx_demo.entrypoints=http"
-      - "traefik.http.routers.htmx_demo.rule=Host(`htmx.docker.localhost`)"
-      - "traefik.http.services.htmx_demo.loadbalancer.server.port=8081"
-      - "traefik.http.routers.htmx_demo.middlewares=redirect-to-https@file"
-      - "traefik.http.routers.htmx_demo_secure.entrypoints=https"
-      - "traefik.http.routers.htmx_demo_secure.rule=Host(`htmx.docker.localhost`)"
-      - "traefik.http.routers.htmx_demo_secure.tls=true"
+    ports:
+      - 7000:7000
     depends_on:
       - db
   db:

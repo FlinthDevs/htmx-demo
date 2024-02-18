@@ -6,12 +6,12 @@ This demo website has been made with
 * [HTMX](https://htmx.org/)
 * [Hyperscript](https://hyperscript.org/)
 * [Chota CSS](https://jenil.github.io/chota/)
+* Go 1.20 + [Gin web framework](https://gin-gonic.com/)
 
 ## Prerequisites
 
-- Go 1.20+ (for local dev)
 - Docker
-- Traefik ([preconfigured version here](https://gitlab.com/florenttorregrosa-docker/apps/docker-traefik/-/forks))
+- Go 1.20+ (optional, for local dev edge cases)
 
 ## Installation
 

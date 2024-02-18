@@ -95,8 +95,8 @@ func main() {
 			return
 		}
 
-		// Make it less snappy.
-		time.Sleep(time.Second * 2)
+		// Add 2s lag to Make it less snappy
+		// time.Sleep(time.Second * 2)
 
 		// Set nextPage to -1 if there are no more posts.
 		nextPage := pageNumber + 1
@@ -192,5 +192,5 @@ func main() {
 		c.HTML(http.StatusOK, "modal.gohtml", gin.H{})
 	})
 
-	router.Run(":8081")
+	router.Run(":7000")
 }
