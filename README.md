@@ -15,7 +15,7 @@ This demo website has been made with
 
 ## Installation
 
-Run `make start`, the website is now accessible at https://htmx.docker.localhost/
+Run `make start`, the website is now accessible at http://localhost:7000/
 
 ## Other commands
 
